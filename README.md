@@ -4,26 +4,24 @@ This Flask application displays my family's favorite recipes!  [Frozen-Flask](ht
 used to generate the static files based on the routes specified in the Flask app.  These static files are hosted on
 [Netlify](https://www.netlify.com):
 
-![Kennedy Family Recipes](project/static/img/flask_recipe_app_screenshot.png?raw=true "Kennedy Family Recipes")
-
-For details on how this Flask app generates static files, check out the [Generating a Static Site with Flask and Deploying it to Netlify](https://testdriven.io/blog/) blog post on [TestDriven](https://testdriven.io/).
+![My Kitchen Recipes](project/static/img/my_kitchen_app_screenshot.png?raw=true "My Kitchen Recipes")
 
 ## Website
 
-[https://www.kennedyrecipes.com/](https://www.kennedyrecipes.com/)
+[https://sajumulakkal.netlify.app](https://sajumulakkal.netlify.app)
 
 ## Installation Instructions
 
 Pull down the source code from this GitLab repository:
 
 ```sh
-git clone git@gitlab.com:patkennedy79/flask-recipe-app.git
+git clone https://github.com/sajumulakkal/my-kitchen-recipes
 ```
 
 Create a new virtual environment:
 
 ```sh
-$ cd flask-recipe-app
+$ cd my-kitchen-recipes
 $ python3 -m venv venv
 ```
 

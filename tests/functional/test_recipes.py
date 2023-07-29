@@ -12,7 +12,7 @@ def test_get_home_page(test_client):
     WHEN the '/' page is requested (GET)
     THEN check the response is valid
     """
-    header_items = [b'Kennedy Family Recipes', b'Recipes', b'Blog', b'About']
+    header_items = [b'My Kitchen Recipes', b'Recipes', b'Blog', b'About']
     recipe_types = [b'Breakfast', b'Dinner', b'Side Dishes',
                     b'Dessert', b'Drinks', b'Baked Goods']
     response = test_client.get('/')
