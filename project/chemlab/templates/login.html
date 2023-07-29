@@ -1,0 +1,44 @@
+ <!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h2>Login with School Email</h2>
+    
+    <div class="login-container">
+        <form method="POST" action="{{ url_for('chemlab.login') }}">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            
+            <button type="submit" class="btn">Login</button>
+        </form>
+        
+        <hr>
+
+        <div class="oauth-providers">
+            <h2>Login with Social Media</h2>
+            <button class="btn google-login" onclick="window.location.href='{{ url_for('chemlab.google_login') }}'">
+                <img src="{{ url_for('static', filename='google_logo.png') }}" alt="" height="30">
+                Login with Google
+            </button>
+            <!--
+            <button class="btn facebook-login" onclick="window.location.href='{{ url_for('chemlab.facebook_login') }}'">
+                <img src="{{ url_for('static', filename='facebook_logo.png') }}" alt="" height="30">
+                Login with Facebook
+            </button>
+            -->
+            <button class="btn linkedin-login" onclick="window.location.href='{{ url_for('chemlab.linkedin_login') }}'">
+                <img src="{{ url_for('static', filename='linkedin_logo.png') }}" alt="" height="30">
+                Login with LinkedIn
+            </button>
+        </div>
+
+        <h2 class="signup-heading">Don't have an account? <button class="btn signup" onclick="window.location.href='{{ url_for('chemlab.signup') }}'">Sign up now!</button></h2>
+    </div>
+</body>
+</html>

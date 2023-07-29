@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sign Up</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h2>Create an Account</h2>
+
+    <div class="signup-container">
+        <form method="POST" action="{{ url_for('chemlab.signup') }}">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <label for="first_name">First Name:</label>
+            <input type="text" id="first_name" name="first_name" required>
+
+            <label for="last_name">Last Name:</label>
+            <input type="text" id="last_name" name="last_name" required>
+
+            <label for="date_of_birth">Date of Birth:</label>
+            <input type="date" id="date_of_birth" name="date_of_birth" required>
+
+            <label for="country">Country:</label>
+            <input type="text" id="country" name="country" required>
+
+            <button type="submit" class="btn">Sign Up</button>
+        </form>
+
+        <div class="login-link">
+            <span>Already have an account? </span>
+            <a class="btn login" href="{{ url_for('chemlab.login') }}">Log in</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}{% endblock %}</title>
+    <!-- Include CSS, JavaScript, or other common resources here -->
+</head>
+<body>
+    <!-- Include navigation bar or header here if applicable -->
+
+    <!-- Include the content of child templates here -->
+    {% block content %}
+    {% endblock %}
+
+    <!-- Add the logout link -->
+    <a href="{{ url_for('chemlab.logout') }}">Logout</a>
+</body>
+</html>

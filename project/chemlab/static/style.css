@@ -1,0 +1,14 @@
+body {
+  font-family: Arial, sans-serif;
+  background-image: url('../static/chemical_lab.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.question {
+  margin-bottom: 10px;
+}
+
+.btn {
+  margin-top: 10px;
+}

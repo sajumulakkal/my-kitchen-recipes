@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chemistry Lab Closure</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>For Closing your Chemistry Lab, you need to complete the following questions. Once completed, a Closing Key will be generated. You can use that key to close your Laboratory.</h1>
+    <form id="questionForm" action="/submit" method="post">
+        <div id="questionContainer">
+            {% for question, answer in questions %}
+            <div class="question">
+                <label for="q{{ loop.index }}">{{ question }}</label>
+                <input type="text" id="q{{ loop.index }}" name="q{{ loop.index }}" required>
+                <input type="hidden" id="a{{ loop.index }}" name="a{{ loop.index }}" value="{{ answer }}">
+            </div>
+            {% endfor %}
+        </div>
+        <div id="randomNumber" style="display: none;"></div>
+        <button id="submitBtn" type="submit" class="btn">Submit</button>
+    </form>
+
+    <div class="logout">
+        <form action="/chemlab/logout" method="post">
+            <button type="submit" class="btn">Logout</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById("questionForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const questions = document.querySelectorAll("input[type='text']");
+            const answers = Array.from(questions).map(question => question.value.trim());
+            const expectedAnswers = Array.from(document.querySelectorAll("input[type='hidden']")).map(answer => answer.value.trim());
+
+            let isValid = true;
+            const invalidIndices = [];
+            expectedAnswers.forEach((expectedAnswer, index) => {
+                if (answers[index] !== expectedAnswer) {
+                    isValid = false;
+                    invalidIndices.push(index + 1);
+                }
+            });
+
+            if (isValid) {
+                const randomNumber = Math.floor(Math.random() * 1000000) + 1;
+                document.body.style.backgroundImage = "url('/static/chem_lab_door_closing.jpg')";
+                const closingKey = "Closing Key: " + randomNumber;
+                alert(closingKey);
+                document.getElementById("randomNumber").innerText = closingKey;
+                document.getElementById("randomNumber").style.display = "block";
+                document.getElementById("submitBtn").style.display = "none";
+                const payloadkey = {
+                    user_email: "{{ session['user'] }}",
+                    closing_key: randomNumber
+                };
+
+                const url = "/save_user_key";
+                fetch(url, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(payloadkey)
+                })
+                .then(response => response.json())
+                .then(data => console.log(data))
+                .catch(error => console.error(error));
+
+
+            } else {
+                // Save user answers to Firebase
+                const userAnswers = Array.from(questions).map(question => question.value.trim());
+                const payload = {
+                    user_email: "{{ session['user'] }}",
+                    answers: userAnswers
+                };
+
+                const url = "/save_user_answers";
+                fetch(url, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(payload)
+                })
+                .then(response => response.json())
+                .then(data => console.log(data))
+                .catch(error => console.error(error));
+                const errorMessage = "Incorrect answers for questions: " + invalidIndices.join(", ");
+                alert(errorMessage);
+            }
+        });
+    </script>
+
+</body>
+</html>

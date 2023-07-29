@@ -13,4 +13,5 @@ freezer = Freezer(app)
 if __name__ == '__main__':
     # Run the development server that generates the static files
     # using Frozen-Flask
-    freezer.run(debug=True)
+    freezer.freeze()  # Generate the static files
+    app.run(debug=True)
