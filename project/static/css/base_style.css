@@ -134,6 +134,14 @@ nav ul {
   justify-content: center;
 }
 
+.recipes1-container {
+  margin: 2.0rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(18rem, 0.3fr));
+  grid-gap: 1.0rem;
+  justify-content: center;
+}
+
 @media screen and (min-width: 1081px) {
   .recipe-container {
     grid-template-columns: repeat(auto-fit, minmax(22rem, 0.3fr));
@@ -186,6 +194,15 @@ nav ul {
   font-size: 1.1rem;
   padding-bottom: 0.35rem;
 }
+.recipes1-title-long {
+  font-size: 1.2rem;
+  padding-bottom: 0.35rem;
+}
+
+.recipes1-title-extra-long {
+  font-size: 1.1rem;
+  padding-bottom: 0.35rem;
+}
 
 .card__body p {
   font-weight: lighter;
@@ -198,7 +215,13 @@ nav ul {
   font-size: 0.8em;
   margin-top: 6px;
 }
-
+.recipes1-badge {
+  border-radius: 6px;
+  padding: 4px;
+  display: inline-block;
+  font-size: 0.8em;
+  margin-top: 6px;
+}
 .dairy-free-badge {
   background-color: green;
   color: white;

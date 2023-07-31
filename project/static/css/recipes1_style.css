@@ -1,0 +1,108 @@
+/* Recipe Container for Recipes1 Page */
+.recipes1-title {
+    grid-area: title;
+}
+.recipes1-description {
+    grid-area: description;
+}
+.recipes1-image {
+    grid-area: image;
+}
+.recipes1-tips {
+    grid-area: tips;
+}
+.recipes1-ingredients {
+    grid-area: ingredients;
+}
+.recipes1-steps {
+    grid-area: steps;
+}
+
+.recipes1-detail-container {
+    margin: auto;
+    display: grid;
+    /*grid-template-columns: 10% auto 10%;*/
+    grid-auto-rows: minmax(50px, auto);
+    grid-gap: 1rem;
+    grid-template-areas:
+        "...  title        ..."
+        "...  image        ..."
+        "...  description  ..."
+        "...  tips         ..."
+        "...  ingredients  ..."
+        "...  steps        ..."
+}
+
+@media screen and (min-width: 600px) {
+    .recipes1-detail-container {
+        margin: 0 12px;
+        grid-template-columns: 25% auto;
+        grid-template-areas:
+            "title        title"
+            "description  image"
+            "tips         tips"
+            "ingredients  steps"
+    }
+}
+
+@media screen and (min-width: 800px) {
+    .recipes1-detail-container {
+        grid-template-columns: 5% 25% auto 5%;
+        grid-template-areas:
+            "...  title        title  ..."
+            "...  description  image  ..."
+            "...  tips         tips   ..."
+            "...  ingredients  steps  ..."
+    }
+}
+
+
+/* Recipe Sections for Recipes1 Page */
+.recipes1-title {
+    margin: auto;
+    font-size: 1.5em;
+    text-align: center;
+}
+
+@media screen and (min-width: 800px) {
+    .recipes1-title {
+        font-size: 2.0em;
+    }
+}
+
+.recipes1-detail-container h2 {
+    text-align: center;
+    border-bottom: 3px solid black;
+    font-weight: bold;
+    padding-bottom: 1rem;
+}
+
+.recipes1-detail-container p {
+    padding-top: 1rem;
+    padding-bottom: 0.2rem;
+}
+
+.recipes1-image img {
+    width: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.recipes1-detail-container ul,
+.recipes1-detail-container ol {
+    list-style-position: inside;
+    padding-bottom: 0.5rem;
+}
+
+.recipes1-detail-container li {
+    padding: 0.6rem 0;
+}
+
+.recipes1-detail-container a,
+.recipes1-detail-container a:visited {
+    color: #9e9ed4;
+}
+
+.recipes1-detail-container h4 {
+    padding-top: 0.5em;
+}
